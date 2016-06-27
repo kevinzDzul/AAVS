@@ -8,23 +8,22 @@ use App\Http\Requests;
 use App\NCF_etapa1;
 use Carbon\Carbon;
 use App\User;
+
 class alta_nfc extends Controller
 {
 
 	public function __construct(){
         $this->middleware('auth');///se configura en midlewere/autenticate para proteger las rutas
         $this->middleware('calidad');
-
     }
-    
+
 
 		public function index(){
 			 $day = Carbon::now();
 
 			$ncf = NCF_etapa1::with('User','User2')->where('responsable','=',Auth::User()->id)->paginate(15);
 			$usuarios = User::lists('NombreC','id');
-			$vista = 'listancf';
-			return view('menu.contenedor',compact('vista','ncf','day','usuarios'));
+			return view('vistas.listancf',compact('ncf','day','usuarios'));
 			}
 
 

@@ -63,7 +63,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        
+
         return User::create([
             'usuario' => $data['usuario'],
             'correo' => $data['correo'],

@@ -1,8 +1,9 @@
-
+@extends('menu.contenedor')
+@section('content')
 <div class="modal-body">
 
   <p>
-    <a href="#myModal1"  data-toggle="modal" class="btn btn-success">Crear Usuarios</a> 
+    <a href="#myModal1"  data-toggle="modal" class="btn btn-success">Crear Usuarios</a>
   </p>
 
 <table class="table table-bordered table-hover table-striped">
@@ -35,3 +36,4 @@
 
 
       @include('modal.altau')
+      @endsection

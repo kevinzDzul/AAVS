@@ -50,12 +50,12 @@
                      </li>
                      <li>
                         <a href="#myModal" id="openBtn" data-toggle="modal">Alta de  NFC</a>
-                        
+
                      </li>
                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mis NCF <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            @if(Auth::User()->nivel == '2')  <!--  Opciones por nivel de validadcion  -->
+                            @if(Auth::User()->nivel == '1' || Auth::User()->nivel == '2'  )  <!--  Opciones por nivel de validadcion  -->
                                 <li><a href="#">Abiertas   </a></li>
                                 <li><a href="#">Finalizadas</a></li>
                                 <li><a href="#">En proceso </a></li>
@@ -65,19 +65,20 @@
                             <li><a href="#">Mis NCF  </a></li> <!-- consecutivos por años -->
                         </ul>
                     </li>
-                     <li> 
-                        <a href="/logout">Salir</a>
-                    </li>
                     <li  class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuraciones <span class="caret"></span></a>
                          <ul class="dropdown-menu">
                              <!--  Opciones por nivel de validadcion  -->
+                             @if(Auth::User()->nivel == '1')
                                 <li><a href="/alta">Alta de usuarios</a></li>
+                                @endif
                                 <li role="separator" class="divider"></li>
-                            <li><a href="#">{!!Auth::User()->usuario!!}</a></li>
                          </ul>
                     </li>
-
+                    <li><a>{!!Auth::User()->NombreC!!}</a></li>
+                    <li>
+                       <a href="/logout">Salir</a>
+                    </li>
                     <!-- -->
 
                     <!-- -->
@@ -92,7 +93,7 @@
     <!-- Page Content -->
     <div class="container">
 
-        @extends('vistas.'.$vista)
+        @yield('content')
             <!--div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Body</h1>
@@ -117,4 +118,3 @@
 </body>
 
 </html>
-

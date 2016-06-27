@@ -16,16 +16,18 @@ class SolicitudController extends Controller
 {
 
 
-     
+
 public function store(Requests\LoginValidador $request){
 
 
 if(Auth::attempt(['usuario' => $request['usuario'],'password' => $request['pass']])){
-
            if(Auth::user()->nivel == '1') {return Redirect::intended('menu');}
            else
-           if(Auth::user()->nivel == '2') {return Redirect::intended('logout');}           
-
+           if(Auth::user()->nivel == '2') {return Redirect::intended('gerentearea');}
+           else
+           if(Auth::user()->nivel == '3') {return Redirect::intended('logout');}
+           else
+           if(Auth::user()->nivel == '4') {return Redirect::intended('logout');}
        }
 
        return Redirect::intended('/');
@@ -39,16 +41,16 @@ if(Auth::attempt(['usuario' => $request['usuario'],'password' => $request['pass'
         return Redirect::intended('/');
     }
 
-    
+
     	///$solicitudes = solicitudes::with('departamento','empleado','motivo','sucursal')->where('estatus','PENDIENTE')->get();
 
 	/*	Mail::send("correo", [], function($message) {
         $message->to("kevind@aduanaldelvalle.mx", "Jeen Kevin")
         ->subject("Correos de pruebass!");
      });*/
-    	
+
     	///return  view('login.login');//response()->json(['status'=>'ok','data'=>$solicitudes], 200);
 ///return  $solicitudes;//view('solicitud',compact('solicitudes'));
 //return view('solicitud',compact('solicitudes'));
-     
+
 }

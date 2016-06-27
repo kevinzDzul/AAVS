@@ -49,9 +49,9 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'calidad'=>  \App\http\Middleware\isControl_de_Calidad::class,
-        'gefeDepto'=>\App\http\Middleware\isGefeDepartamento::class,
-        'gerenteArea'=>\App\http\Middleware\isGerente_de_Area::class,
-        'empleado'=>\App\http\Middleware\isUEmpleado::class,
+        'calidad' =>    \App\Http\Middleware\isControl_de_Calidad::class,
+        'gefeDepto' =>  \App\Http\Middleware\isGefeDepartamento::class,
+        'gerenteArea'=> \App\Http\Middleware\isGerente_de_Area::class,
+        'empleado' =>   \App\Http\Middleware\isUEmpleado::class,
     ];
 }

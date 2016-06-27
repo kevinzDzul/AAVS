@@ -16,16 +16,19 @@ Route::get('/', function () {
 });
 
 Route::resource('empleado','SolicitudController',
-	['only'=>['store','logout']] ); ///////////ruta que redirecciona segun el nivel de usuario
+	['only'=>['store']] ); ///////////ruta que redirecciona segun el nivel de usuario
+  Route::get('logout','SolicitudController@logout');////ruta de salida
 
 
-Route::resource('alta','altaUsuarios',['only'=>['index','store','update','delete']]);    ///ruta para el alta de usuarios 
-  
-
-
-
-Route::get('logout','SolicitudController@logout');////ruta de salida
+Route::resource('alta','altaUsuarios',['only'=>['index','store','update','delete']]);    //// control de calidad
+///ruta para el alta de usuarios(control de calidad)
 
 
 	Route::resource('menu','alta_nfc',  /////ruta del menu
 	['only'=>['index','store']]);
+
+  Route::resource('usuario','EmpleadoController',['only'=>['index','store','update','delete']]);///empleado normalito
+
+  Route::resource('gerentearea','GefedeptoController',['only'=>['index','store','update','delete']]);///jefe del area
+
+  Route::resource('gerentedepto','GerenteareaController',['only'=>['index','store','update','delete']]);///jefe de depto

@@ -21,12 +21,11 @@ class altaUsuarios extends Controller
     public function index(){
 
     	 $usuarios = User::paginate(10);
-         $departamento = departamento::lists('Departamento','ID_departamento'); 
+         $departamento = departamento::lists('Departamento','ID_departamento');
          $sucursal = sucursal::lists('nom_Sucursal','ID');
          $cargo = cargo::lists('nom_cargo','int');
 
-    	$vista = 'altausuarios';
-			return view('menu.contenedor',compact('vista','usuarios','departamento','sucursal','cargo'));
+			return view('vistas.altausuarios',compact('usuarios','departamento','sucursal','cargo'));
     }
 
 
@@ -47,7 +46,7 @@ class altaUsuarios extends Controller
 
 
 
-    
+
 
 
 
